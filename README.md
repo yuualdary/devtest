@@ -1,7 +1,11 @@
 
-Laravel Framework, Cara Menjalankan, download project saya, kemudian install composer dengan command di terminal"composer install", karena saat dipush di git folder vendor tidak ada.
-Migrate data terlebih dahulu dengan command "php artisan migrate", kemudian menjalankan laravel dapat menggunakan command "php artisan serve". Untuk seeder dpt di jalankan dengan command "php artisan make:seed --class"namaclassseeder"
+Laravel Framework, Cara Menjalankan, download project saya, kemudian install composer dengan command di terminal"composer install", karena saat dipush di git folder vendor tidak ada.<br>
+Migrate data terlebih dahulu dengan command "php artisan migrate", kemudian menjalankan laravel dapat menggunakan command "php artisan serve". 
+<br>
+Untuk seeder dpt di jalankan dengan command "php artisan make:seed --class"namaclassseeder"
+<br>
 Untuk memakai api dapat menggunakan postman dengan route "http://127.0.0.1:8000/api/namaprefix/namacrud".
+<br>
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
