@@ -14,11 +14,11 @@ class category_product extends Model
     protected $fillable=['product_id','category_id'];
 
     public function categories(){
-        return $this->hasMany(category::class,'id','category_id');
+        return $this->hasOne(category::class,'id','category_id');
     }
 
     public function products(){
-        return $this->hasMany(product::class,'id','product_id');
+        return $this->hasOne(product::class,'id','product_id');
     }
 
 }

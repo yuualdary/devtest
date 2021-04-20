@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\catprodController;
+use App\Http\Controllers\imageController;
+use App\Http\Controllers\prodimage;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +52,26 @@ Route::group([
         Route::post('update/{id}',[catprodController::class,'update']);
         Route::post('delete/{id}',[catprodController::class,'destroy']);
     });
+Route::group([
+        'prefix'=>'image'],
+        function(){
+            Route::post('create',[imageController::class,'store']);
+            Route::get('all',[imageController::class,'index']);
+            Route::get('detail/{id}',[imageController::class,'detail']);
+            Route::post('update/{id}',[imageController::class,'update']);
+            Route::post('delete/{id}',[imageController::class,'destroy']);
+});
+
+Route::group([
+    'prefix'=>'product_image'],
+    function(){
+        Route::post('create',[prodimage::class,'store']);
+        Route::get('all',[prodimage::class,'index']);
+        Route::get('detail/{id}',[prodimage::class,'detail']);
+        Route::post('update/{id}',[prodimage::class,'update']);
+        Route::post('delete/{id}',[prodimage::class,'destroy']);
+});
+    
 
     
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\category_product;
-class catprodController extends Controller
+use App\Models\product_image;
+use validator;
+class prodimage extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,12 @@ class catprodController extends Controller
     public function index()
     {
         //
-        $category_product = category_product::with('categories','products')->get();
-        return response()->json([
-            'response_code'=>'00',
-            'response_message'=>'success show data',
-            'category_product'=>$category_product
-        ]);
+        $product_image = product_image::with('images','products')->get();
+            return response()->json([
+                'response_code'=>'00',
+                'response_message'=>'success show data',
+                'product_image'=>$product_image
+            ]);
     }
 
     /**
@@ -30,6 +31,7 @@ class catprodController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -43,21 +45,22 @@ class catprodController extends Controller
         //
         $validated = $request->validate([
             'product_id' => 'required',
-            'category_id'=>'required',
+            'image_id'=>'required',
             
         ]);
 
-        $category_product = category_product::create([
+        $product_image = product_image::create([
             'product_id' => $request->product_id,
-            'category_id'=>$request->category_id,
+            'image_id'=>$request->image_id,
             
         ]);
 
         return response()->json([
             'response_code'=>'00',
             'response_message'=>'success creating category product',
-            'category_product'=>$category_product
+            'product_image'=>$product_image
         ]);
+
     }
 
     /**
@@ -66,16 +69,9 @@ class catprodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function detail($id)
+    public function show($id)
     {
         //
-        $category_product = category_product::with('categories','products')->where('id',$id)->get();
-
-        return response()->json([
-            'response_code'=>'00',
-            'response_message'=>'Detail data',
-            'category_product'=>$category_product
-        ]);
     }
 
     /**
@@ -84,9 +80,16 @@ class catprodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function detail($id)
     {
         //
+        $product_image = product_image::with('images','products')->where('id',$id)->get();
+
+        return response()->json([
+            'response_code'=>'00',
+            'response_message'=>'Detail data',
+            'product_image'=>$product_image
+        ]);
     }
 
     /**
@@ -99,16 +102,19 @@ class catprodController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $category_product =  category_product::find($id);
 
-        $category_product->update([
+        $product_image =  product_image::find($id);
+
+        $product_image->update([
             'product_id' => $request->product_id,
-            'category_id'=>$request->category_id,
+            'image_id'=>$request->image_id,
         ]);
         
         return response()->JSON([
-            'response_message'=>'Success Edit Category Product',
+            'response_message'=>'Success Edit Product Image',
         ]);
+
+
     }
 
     /**
@@ -120,13 +126,10 @@ class catprodController extends Controller
     public function destroy($id)
     {
         //
-        $category_product = category_product::find($id);
-        $category_product->delete();
+        $product_image = product_image::find($id);
+        $product_image->delete();
         return response()->JSON([
             'response_message'=>'success delete',
         ]);
-        
     }
-
-    
 }

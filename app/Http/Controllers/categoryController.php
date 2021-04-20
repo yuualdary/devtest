@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\category;
+use App\Models\category_product;
 use Validator;
 
 class categoryController extends Controller
@@ -131,15 +132,15 @@ class categoryController extends Controller
         //
         $category =  category::find($id);
 
-       $CheckRelation = category_product::where('id',$id);
-
+       $CheckRelation = category_product::where('category_id',$id)->get();
        $name= $category->name; 
-       if($CheckRelation !=NULL){
+       if(count($CheckRelation) != NULL ){
 
             return response()->JSON([
                 'response_message'=>'Cannot Delete Data, Because Used in Another Proses'
             ]);
        }else{
+          
            $category->delete();
 
            return response()->JSON([

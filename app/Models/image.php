@@ -13,6 +13,7 @@ class image extends Model
 
     protected $fillable=['name','file','enable'];
 
+    
     public function product_images(){
         
         return $this->hasMany(product_image::class,'image_id','id');

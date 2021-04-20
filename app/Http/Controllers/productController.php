@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\category_product;
 
 class productController extends Controller
 {
@@ -131,10 +132,10 @@ class productController extends Controller
         //
         $product = product::find($id);
 
-        $CheckRelation = category_product::where('id',$id);
+        $CheckRelation = category_product::where('id',$id)->get();
  
         $name= $product->name; 
-        if($CheckRelation !=NULL){
+        if(count($CheckRelation) !=NULL){
  
              return response()->JSON([
                  'response_message'=>'Cannot Delete Data, Because Used in Another Proses'

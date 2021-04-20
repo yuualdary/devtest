@@ -14,7 +14,7 @@ class product extends Model
     protected $fillable=['name','description','enable'];
 
     public function category_products(){
-        return $this->belongsTo(category_product::class);
+        return $this->hasMany(category_product::class,'id','category_products');
     }
 
     public function product_images(){
