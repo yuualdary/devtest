@@ -6,6 +6,7 @@ Untuk seeder dpt di jalankan dengan command "php artisan make:seed --class"namac
 <br>
 Untuk memakai api dapat menggunakan postman dengan route "http://127.0.0.1:8000/api/namaprefix/namacrud".
 <br>
+Untuk melihat ERD dapat menekan ERD.png diatas
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
